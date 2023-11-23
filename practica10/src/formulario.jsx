@@ -9,9 +9,10 @@ function Formulario(props) {
     
     const hacerPeticion = async () => {
         try{
-            const response = await axios.get('http://localhost:5173/1')
-            return response.data
+            //const response = await axios.get('http://localhost:4567/2',{params: datosFormulario})
+            const response = await axios.post('http://localhost:4567/2',datosFormulario)
             console.log(response.data)
+            return response.data
         } catch(error){
             throw error
         }
@@ -49,7 +50,7 @@ function Formulario(props) {
                 <form onSubmit={procesarFormulario}>
                     <h1>Inicio de sesion</h1>
                     <Box m={5}>
-                    <TextField label="nombre: " variant="outlined"  onChange={cambiosFormulario} name = "nombre" value={datosFormulario.nombre} fullWidth></TextField>
+                    <TextField label="nombre:" variant="outlined"  onChange={cambiosFormulario} name = "nombre" value={datosFormulario.nombre} fullWidth></TextField>
                     </Box>
                     <Box m={5}>
                     <TextField label="contraseña" variant="outlined"  onChange={cambiosFormulario} name = "password" value={datosFormulario.password} fullWidth></TextField>
